@@ -1,2 +1,2 @@
 node_modules
-*.json 
+*.json // CR MAJOR [conventions]: WHY? you should include package.json in your repository
