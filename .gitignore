@@ -1,4 +1,3 @@
 node_modules
 tsconfig.json 
 package-lock.json
-// CR MAJOR [conventions]: WHY? you should include package.json in your repository
