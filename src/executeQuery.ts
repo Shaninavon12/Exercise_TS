@@ -1,7 +1,5 @@
-// CR minor [naming]: rename this file, index.ts is not an indicative name. should be reserved for imports/exports only.
-import { createConnection } from "mysql2";
-// CR minor [syntax]: why object type? there isn't a more indicative type for SQL query result?
-let executeResult: {};
+import { RowDataPacket, createConnection } from "mysql2";
+let executeResult: RowDataPacket[];
 
 export function query(): object {
 	const connection = createConnection({
@@ -12,12 +10,15 @@ export function query(): object {
 		database: "employeesdb",
 	});
 
-	connection.execute("SELECT * FROM employees", function (err, result) {
-		if (err) {
-			console.log(err);
+	connection.execute<RowDataPacket[]>(
+		"SELECT * FROM employees",
+		function (err, result) {
+			if (err) {
+				console.log(err);
+			}
+			executeResult = result;
 		}
-		executeResult = result;
-	});
+	);
 
 	return executeResult;
 }
