@@ -1,4 +1,4 @@
-import { query } from "./index";
+import { query } from "./executeQuery";
 import express, { Request, Response } from "express";
 const app = express();
 const port = 3000;
